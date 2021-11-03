@@ -65,16 +65,48 @@ public class MyArrayList {
     }
 
     // 判定是否包含某个元素
-    public boolean contains(int toFind) { return true; }
+    public boolean contains(int toFind) {
+        for (int i = 0; i < this.usedSize; i++) {
+            if (this.elem[i] == toFind) {
+                return true;
+            }
+        }
+        return false;
+    }
     // 查找某个元素对应的位置
-    public int search(int toFind) { return -1; }
+    public int search(int toFind) {
+        for (int i = 0; i < this.usedSize; i++) {
+            if (this.elem[i] == toFind) {
+                return i;
+            }
+        }
+        return -1;
+    }
     // 获取 pos 位置的元素
-    public int getPos(int pos) { return -1; }
+    public int getPos(int pos) {
+        if (this.isEmpty()) {
+            System.out.println("顺序标为空！");
+            return -1;
+        }
+        if(pos > this.usedSize || pos < 0) {
+            return -1;
+        }
+        return this.elem[pos];
+    }
     // 给 pos 位置的元素设为 value
-    public void setPos(int pos, int value) { }
+    public void setPos(int pos, int value) {
+        if (pos > this.usedSize || pos < 0) {
+            return;
+        }
+        if (this.isEmpty()) {
+            System.out.println("顺序表为空！");
+            return;
+        }
+        this.elem[pos] = value;
+    }
     //删除第一次出现的关键字key
     public void remove(int toRemove) {
-        if (isEmpty()) {
+        if (this.isEmpty()) {
             System.out.println("顺序表为空！");
             return;
         }
@@ -89,5 +121,8 @@ public class MyArrayList {
         this.usedSize--;
     }
     // 清空顺序表
-    public void clear() { }
+    public void clear() {
+        this.usedSize = 0;
+
+    }
 }
