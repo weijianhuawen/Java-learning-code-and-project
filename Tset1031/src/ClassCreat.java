@@ -260,13 +260,19 @@ class Student {
 }*/
 class AnonymousObject {
     public int a;
-
+    int b;
     public AnonymousObject() {
         this.a = 188;
     }
 }
+
 public class ClassCreat {
+
+
     public static void main(String[] args) {
         System.out.println(new AnonymousObject().a);
+        AnonymousObject anob = new AnonymousObject();
+        anob.b = 12;
+        System.out.println(anob.b);
     }
 }
