@@ -1,32 +1,14 @@
 class ListNode {
-    public int val;
-    ListNode next;
-    ListNode() {
-
-    }
-    ListNode(int val) {
-        this.val = val;
+    public int val;//数据域
+    ListNode next;//引用（指针）域
+    ListNode() {}
+    public ListNode(int val) {
+        this.val = val;//初始化链表结点值构造方法
     }
 }
 
 
 public class SList {
-
-    public static void main(String[] args) {
-        //这里是main函数内部
-        ListNode node = new ListNode(1);
-        SList list = new SList();
-        list.head = node;
-        list.addFirst(2);
-        list.addFirst(3);
-        list.addFirst(4);
-        list.addFirst(5);
-        list.addFirst(3);
-        list.display();
-        list.removeAllKey(3);
-        list.display();
-
-    }
 
     public ListNode head;
     //头插法
