@@ -4,8 +4,31 @@ class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;
+    public TreeNode(int val) {
+        this.val = val;
+    }
 }
-public class Test {
+public class Tree {
+    public TreeNode root;
+
+    public TreeNode createTree() {
+        TreeNode A = new TreeNode('A');
+        TreeNode B = new TreeNode('B');
+        TreeNode C = new TreeNode('C');
+        TreeNode D = new TreeNode('D');
+        TreeNode E = new TreeNode('E');
+        TreeNode F = new TreeNode('F');
+        TreeNode G = new TreeNode('G');
+        TreeNode H = new TreeNode('H');
+        A.left = B;
+        A.right = C;
+        B.left = D;
+        B.right = E;
+        C.left = F;
+        C.right = G;
+        //E.right = H;
+        return A;
+    }
     public int size(TreeNode root) {
         int ans = 0;
         if (root == null) {
@@ -94,7 +117,7 @@ public class Test {
     public static void main(String[] args) {
         int[] arr = {7,57,13,31,17,65,32,3,97,22,7,20,69,35,69,75,13,33,50,80,64,71,15,28,2,27,39,48,13,22,84,5,51,46,26,78,56,63};
         ArrayList<Integer> list2 = new ArrayList<>();
-        Deque
+
     }
 }
 class BSTIterator {
