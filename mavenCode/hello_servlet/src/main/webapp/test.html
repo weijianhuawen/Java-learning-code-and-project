@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST响应</title>
+</head>
+<body>
+    
+    <script src="./jquery3.6.0.js"></script>
+    <script>
+        $.ajax({
+            type: "post",
+            url: "./method",
+            success: function (body){
+                console.log(body);
+            }
+        })
+    </script>
+</body>
+</html>
