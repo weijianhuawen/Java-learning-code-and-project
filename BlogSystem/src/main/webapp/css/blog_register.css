@@ -1,0 +1,78 @@
+.register-container {
+    width: 100%;
+    height: calc(100% - 90px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register-container .register-dialog{
+    width: 700px;
+    height: 520px;
+    background-color: rgba(215, 232, 243, 0.8);
+    border-radius: 10px;
+}
+.register-container h3{
+    text-align: center;
+    font-size: 24px;
+    padding: 52px 0;
+}
+
+.row {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row span{
+    display: block;
+
+    font-weight: 700;
+    width: 100px;
+    font-size: 20px;
+}
+
+.row #username, .row #password, .row #ispassword{
+    width: 300px;
+    height: 40px;
+    border: none;
+    outline: none;
+
+
+    border-radius: 10px;
+    font-size: 20px;
+    text-indent: 0.5em;
+    color: rgb(200, 140, 200);
+}
+
+.row button{
+    width: 200px;
+    height: 50px;
+    border: none;
+    outline: none;
+
+
+    margin-top: 50px;
+    border-radius: 10px;
+    color: black;
+    font-size: 20px;
+    background-color: rgba(120, 180, 230, 0.5);
+}
+
+.register-dialog a{
+    display: block;
+    text-align: right;
+    padding: 30px 50px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+.register-dialog a:active, .register-dialog a:hover{
+    color: rgb(100,155,200);
+}
+
+.row button:active{
+    background-color: rgba(150,150,150,0.3);
+}

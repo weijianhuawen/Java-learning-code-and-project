@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客详情页</title>
+    
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/blog_detail.css">
+    <!-- 引入 editor.md 的依赖 -->
+    <link rel="stylesheet" href="editor.md/css/editormd.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="editor.md/lib/marked.min.js"></script>
+    <script src="editor.md/lib/prettify.min.js"></script>
+    <script src="editor.md/editormd.js"></script>
+</head>
+<body>
+        <!-- 导航栏 -->
+        <div class="nav">
+            <img src="./img/head.png" alt="">
+            <span>我的博客系统</span>
+            <div class="space"></div>
+            <a href="blog_list.html">主页</a>
+            <a href="blog_editor.html">写博客</a>
+            <a href="#" id="logout">退出登录</a>
+        </div>
+
+            <!-- 核心页面 -->
+    <div class="null"></div>
+    <div class="container"> 
+        <div class="left">
+            <div class="card">
+                <img class="imghead" src="./img/头像.png" alt="加载失败">
+                <h3>
+                    <!-- 作者信息 -->
+                </h3>
+                <a href="#">github</a>
+                <div class="counter">
+                    <span>博客数量 &nbsp</span>
+                    <span>专栏数量</span>
+                </div>
+                <div class="counter">
+                    <span>120</span>
+                    <span>12</span>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="blog-content">
+                <!-- 标题 -->
+                <h3 class="blog-title">
+                    我的第一篇博客
+                </h3>
+                <!-- 时间 -->
+                <div class="blog-date">
+                    <!-- 2021年6月18日 -->
+                </div>
+                <!-- 正文 -->
+                <div id="content" style="opacity: 0.7; background-color: aliceblue; border-radius: 10px;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="null"></div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        function getBolgDetail() {
+            $.ajax({
+                type: "get",
+                url: "blog" + location.search,
+                contentType: "application/json; charset=utf8",
+                success: function(body) {
+                    //构造博客详情页的页面
+                    // 1.构造标题
+                    let titleDiv = document.querySelector(".blog-title");
+                    titleDiv.innerHTML = body.title;
+                    //2.构造文章发布时间
+                    let dateDiv = document.querySelector(".blog-date");
+                    dateDiv.innerHTML = body.postTime;
+                    //3.构造正文 注意是经过Markdown渲染后的正文
+                    //let contentDiv = document.querySelector("#content");
+
+                    //使用editormd中的方法来对响应中的md源码进行渲染
+                    editormd.markdownToHTML("content", {
+                        markdown: body.content
+                    });
+                },
+                error: function() {
+                    alert("加载资源失败！");
+                }
+            });
+        }
+        function getUserInfo() {
+            $.ajax({
+                type: "get",
+                url: "login",
+                contentType: "application/json; charset=utf8",
+                success: function(body) {
+                    let type = typeof(body);
+                    if (type === "string") {
+                        alert("未知错误!");
+                        return;
+                    }
+                    if (body.userId && body.userId > 0) {
+                        //已经登录状态,在卡片栏更新作者信息
+                        getAuthorInfo(body);
+                        console.log("登录成功! 用户名：" + body.userName);
+                    } else {
+                        //登录失败或未登录
+                        //跳转到登录页面
+                        alert("登录失败!请重新登录!");
+                        location.assign("blog_login.html");
+                    }
+                },
+                error: function() {
+                    alert("登录异常，请重新登录!");
+                    location.assign("blog_login.html");
+                }
+            });
+            
+        }
+        getBolgDetail();
+        getUserInfo();
+        function setUserName(username) {
+            //选中h3标签
+            let h3 = document.querySelector(".card>h3");
+            h3.innerHTML = username;
+        }
+        function getAuthorInfo(user) {
+            $.ajax({
+                type: "get",
+                url: "authorInfo" + location.search,
+                contentType: "application/json; charset=utf8",
+                success: function(body) {
+                    let type = typeof(body);
+                    if (type === "string") {
+                        alert("未知错误!");
+                        return;
+                    }
+                    //处理
+                    if (body.userName) {
+                        //作者存在更新卡片
+                        setUserName(body.userName);
+                        //给作者添加删除权限
+                        if (user.userName === body.userName) {
+                            let rightContentDiv = document.querySelector(".right .blog-content");
+                            let del = document.createElement("a");
+                            del.href = "blogDelete" + location.search;
+                            del.className = "del";
+                            del.innerHTML = "删除本文";
+                            rightContentDiv.appendChild(del);
+
+                            del.onclick = function () {
+                                $.ajax({
+                                   type: "get",
+                                   url: "blogDelete" + location.search,
+                                   contentType:"application/json; charset=utf8",
+                                   success: function (body) {
+                                       let type = typeof(body);
+                                       if (type === "string") {
+                                           alert("未知错误!");
+                                           return;
+                                       }
+                                       if (body.ok) {
+                                           //删除成功
+                                           alert(body.reason);
+                                           location.assign("blog_list.html");
+                                       } else {
+                                           alert(body.reason);
+                                       }
+                                   }
+                                });
+                            }
+                        }
+                    } else {
+                        //错误
+                        alert("提示:" + body.reason);
+                    }
+                }
+            });
+        }
+    </script>
+    <script src="./js/common.js"></script>
+</body>
+</html>

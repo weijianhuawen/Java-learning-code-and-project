@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/blog_register.css">
+</head>
+<body>
+        <!-- 导航栏 -->
+        <div class="nav">
+            <img src="./img/head.png" alt="">
+            <span>我的博客系统</span>
+            <div class="space"></div>
+            <a href="blog_list.html">主页</a>
+            <a href="#">写博客</a>
+            <a href="blog_login.html">登录</a>
+        </div>
+        <div class="null"></div>
+
+        <div class="register-container">
+            <div class="register-dialog">
+                <h3>快到碗里来吧</h3>
+                <div class="row">
+                    <span>用户名</span>
+                    <input type="text" name="" id="username">
+                </div>
+                <div class="row">
+                    <span>设置密码</span>
+                    <input type="password" name="" id="password">
+                </div>
+                <div class="row">
+                    <span>确认密码</span>
+                    <input type="password" name="" id="ispassword">
+                </div>
+                <div class="row">
+                    <button>注册</button>
+                </div>
+                <a href="blog_login.html" class="login">已有账户？登录</a>
+            </div>
+        </div>
+        <div class="null"></div>
+
+        <script src="./js/jquery.min.js"></script>
+
+        <script>
+            let button = document.querySelector("button");
+            button.onclick = function () {
+                let inputs = document.querySelectorAll("input");
+                let username = inputs[0].value;
+                let password = inputs[1].value;
+                let ispassword = inputs[2].value;
+
+                if (username == null || password == null || ispassword == null) {
+                    return;
+                }
+                let register = {
+                    username: username,
+                    password: password,
+                    ispassword: ispassword
+                }
+
+                $.ajax({
+                    type: "post",
+                    url:"register",
+                    contentType: "application/json; charset=utf8",
+                    data:JSON.stringify(register),
+                    success: function(body) {
+                        let type = typeof(body);
+                        let result = body;
+                        if (type === "string") {
+                            result = JSON.parse(body);
+                        } else if (result === null) {
+                            alert("未知错误！");
+                            return;
+                        }
+                        let message = result.ok;
+                        if (message === "lack") {
+                            alert("信息不完整!");
+                        } else if (message === "repeat") {
+                            alert("用户名已经存在!");
+                        } else if (message === "no") {
+                            alert("密码与确认密码不一致!");
+                        } else if (message === "yes") {
+                            alert("注册成功!");
+                        }
+                    },
+                    error: function() {
+                        alert("未知错误!");
+                    }
+                });
+            }
+        </script>
+</body>
+</html>

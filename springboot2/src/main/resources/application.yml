@@ -1,0 +1,22 @@
+server:
+  port: 8082
+
+# 自定义配置信息
+custom:
+  name: zhangsan
+  id: 1
+
+mystring:
+  str1: 你好\n配置
+  str2: '你好\n配置'
+  str3: "你好\n配置"
+
+
+#student:
+#  id: 1
+#  name: 张三
+#  age: 18
+
+student: {id: 1,name: 张三,age: 18}
+
+dbtypes: {name: [mysql, sqlserver, db2]}

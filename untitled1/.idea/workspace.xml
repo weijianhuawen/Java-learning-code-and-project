@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="322a35fa-8954-41e2-bba0-f628624dfff4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Acwing/Acwing.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main1459.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main3346.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main3358.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main3370.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main4317.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main4318.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main4319.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main4379.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Acwing/src/Main4380.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlueBridge/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlueBridge/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlueBridge/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlueBridge/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlueBridge/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlueBridge/BlueBridge.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlueBridge/src/WeekDayOne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlueBridge/src/WeekSunday.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/FileIO.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/Program1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/Program2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/Program3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/TestDemo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/TestDemo2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/TestDemo3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/TestDemo4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/TestDemo5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/TestDemo6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/TestDemo7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FileIO/src/TestDemo8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/InterClass.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/Outer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/out1/Outer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/out1/SequeArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/out2/Outer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/out3/Outer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/out4/Outer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/out5/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/out5/Outer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InterClass/src/out6/Outer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LUOGU/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LUOGU/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LUOGU/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LUOGU/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LUOGU/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LUOGU/LUOGU.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LUOGU/src/Main2249.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCode2022_3/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCode2022_3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCode2022_3/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCode2022_3/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCode2022_3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCode2022_3/LeetCode2022_3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCode2022_3/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/LeetCodeTest.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/src/MainD75.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/src/ld76/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/src/ls287/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeetCodeTest/src/ls288/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MySQL/MySQL.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MySQL/src/Book.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/Practise.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/ArrayTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main6_1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main6_2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main6_3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_13.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_30.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_31.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_33.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_5_new.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/Main7_8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/Main11.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/Main12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/Main13.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main/wei/jian/hua/wen/Main9.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main1/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main1/Main10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/main1/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practise/src/test.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SetAndMap/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SetAndMap/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SetAndMap/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SetAndMap/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SetAndMap/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SetAndMap/SetAndMap.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SetAndMap/src/Test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SetAndMap/src/Test2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/Thread.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/Main11.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/Main12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/Main13.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/Mian11.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo12.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/TestDemo9.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/WiteNotify.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/blocking/PCMod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/juc/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/juc/Practice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/single/Singleton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/threadpool/ThreadPoolProgram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thread/src/timer/TimeProgram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公选课/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公选课/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公选课/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公选课/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公选课/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公选课/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公选课/src/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公选课/公选课.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearchTree/src/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BinarySearchTree/src/BinarySearchTree.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="28965bpLjegseRyQhwf6pt77feX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="322a35fa-8954-41e2-bba0-f628624dfff4" name="Changes" comment="" />
+      <created>1650616272520</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650616272520</updated>
+      <workItem from="1650616274114" duration="1000" />
+    </task>
+    <servers />
+  </component>
+</project>

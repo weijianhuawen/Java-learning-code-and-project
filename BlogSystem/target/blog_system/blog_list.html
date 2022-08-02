@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客页面</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/blog_list.css">
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <div class="nav">
+        <img src="./img/head.png" alt="">
+        <span>我的博客系统</span>
+        <div class="space"></div>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_editor.html">写博客</a>
+        <a href="#" id="logout">退出登录</a>
+    </div>
+    <!-- 核心页面 -->
+    <div class="null"></div>
+    <div class="container"> 
+        <div class="left">
+            <div class="card">
+                <img class="imghead" src="./img/头像.png" alt="加载失败">
+                <h3>
+                    <!-- 用户名，如未见花闻 -->
+                </h3>
+                <a href="#">github</a>
+                <div class="counter">
+                    <span>博客数量 &nbsp</span>
+                    <span>专栏数量</span>
+                </div>
+                <div class="counter">
+                    <span>120</span>
+                    <span>12</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="right">
+<!--            <div class="blog">-->
+<!--                <div class="title">-->
+<!--                    动态规划之0-1背包问题（详解+分析+原码）-->
+<!--                </div>-->
+<!--                <div class="date">-->
+<!--                    2022年5月8日-->
+<!--                </div>-->
+<!--                <div class="abstract">-->
+<!--                    本篇文章将介绍算法专题之动态规划中的背包问题，更准确的说是背包问题中最简单的一种类型，即0-1背包问题，就是给你一定容量的背包和若干物品，每种物品只能选一次，告诉你每件物品的价值和体积，求背包里面物品的最大总价值。-->
+<!--                </div>-->
+<!--                <a href="#">点击阅读全文 &gt;&gt;</a>-->
+<!--            </div>-->
+<!--            <div class="blog">-->
+<!--                <div class="title">-->
+<!--                    计算机网络之UDP与TCP协议(三次握手, 四次挥手)-->
+<!--                </div>-->
+<!--                <div class="date">-->
+<!--                    2022年5月2日-->
+<!--                </div>-->
+<!--                <div class="abstract">-->
+<!--                    本文介绍计算机网络中有关传输层协议的知识——UDP与TCP协议，在TCP协议中，为了保证数据的可靠传输，引入了十大保证可靠性的机制，即确认应答，超时重传，连接管理(三次握手,四次挥手)，滑动窗口，流量控制，拥塞控制，延时应答，捎带应答，粘包问题，TCP异常处理，这些都是UDP所不具备的，因为UDP不能保证数据的可靠性。-->
+<!--                </div>-->
+<!--                <a href="#">点击阅读全文 &gt;&gt;</a>-->
+            </div>
+        </div>
+    </div>
+    <div class="null"></div>
+    <!-- 获取博客列表页 -->
+    <script>
+        function getBlogList() {
+            $.ajax({
+                type: "get",
+                url: "blog",
+                success: function(body) {
+                    //获取到的body就是一个js数组，我们根据这个对象数组来构造博客列表页
+                    let rightDiv = document.querySelector(".right");
+                    //将类名为right的html内容清空
+                    rightDiv.innerHTML = "";
+                    //构造.right的页面
+                    for (let blog of body) {
+                        //构造.blog的div
+                        let blogDiv = document.createElement('div');
+                        blogDiv.className = "blog";
+                        //构造标题
+                        let titleDiv = document.createElement('div');
+                        titleDiv.className = "title";
+                        titleDiv.innerHTML = blog.title;
+                        blogDiv.appendChild(titleDiv);
+                        //构造日期
+                        let dateDiv = document.createElement('div');
+                        dateDiv.className = "date";
+                        dateDiv.innerHTML = blog.postTime;
+                        blogDiv.appendChild(dateDiv);
+                        //构造摘要
+                        let  abstractDiv = document.createElement('div');
+                        abstractDiv.className = "abstract";
+                        abstractDiv.innerHTML = blog.content;
+                        blogDiv.appendChild(abstractDiv);
+                        //构造阅读原文超链接
+                        let aDiv = document.createElement('a');
+                        aDiv.innerHTML = "点击阅读全文 &gt;&gt;";
+                        aDiv.href = "blog_detail.html?blogId=" + blog.blogId;
+                        blogDiv.appendChild(aDiv);
+                        rightDiv.appendChild(blogDiv);
+                    }
+                },
+                error: function() {
+                    alert("获取资源失败!");
+                }
+            });
+        }
+
+        function getUserInfo() {
+            $.ajax({
+                type: "get",
+                url: "login",
+                contentType: "application/json; charset=utf8",
+                success: function(body) {
+                    let type = typeof(body);
+                    if (type === "string") {
+                        alert("未知错误!");
+                        return;
+                    }
+                    if (body.userId && body.userId > 0) {
+                        //已经登录状态,改变卡片上的用户名
+                        setUserName(body.userName);
+                        console.log("登录成功! 用户名：" + body.userName);
+                    } else {
+                        //登录失败或未登录
+                        //跳转到登录页面
+                        alert("登录失败!请重新登录!");
+                        location.assign("blog_login.html");
+                    }
+                },
+                error: function() {
+                    alert("登录异常，请重新登录!");
+                    location.assign("blog_login.html");
+                }
+            });
+            
+        }
+        getBlogList();
+        getUserInfo();
+
+        //修改卡片信息
+        //由于数据库设计时没有考虑这一部分，我们只能根据登录用户的信息修改卡片上的用户名信息
+        function setUserName(username) {
+            //选中h3标签
+            let h3 = document.querySelector(".card>h3");
+            h3.innerHTML = username;
+        }
+    </script>
+    <script src="./js/common.js"></script>
+</body>
+</html>
