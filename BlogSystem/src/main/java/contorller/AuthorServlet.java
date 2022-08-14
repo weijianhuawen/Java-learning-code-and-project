@@ -51,6 +51,7 @@ public class AuthorServlet extends HttpServlet {
             return;
         }
         //最终找到了
+        Object
         user.setPassword("");
         String jsonStr = objectMapper.writeValueAsString(user);
         resp.getWriter().write(jsonStr);

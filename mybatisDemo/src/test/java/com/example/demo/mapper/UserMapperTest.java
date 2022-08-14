@@ -18,36 +18,33 @@ class UserMapperTest {
     private UserMapper userMapper;
     @Test
     void gerUserById() {
-        UserInfo userInfo = userMapper.getUserById(1);
+        UserInfo userInfo = userMapper.getUserById(2);
         //System.out.println(userInfo);
         Assertions.assertNotNull(userInfo);
     }
     @Test
     @Transactional
     void updateName() {
-        int result = userMapper.updateName(2, "王五");
+        int result = userMapper.updateName(2, "李四");
         Assertions.assertSame(1,result);
     }
     @Test
     @Transactional
     void delById() {
-        int result = userMapper.delById(1);
+        int result = userMapper.delById(2);
         Assertions.assertSame(1,result);
     }
 
     @Test
-    @Transactional
     void add() {
         UserInfo userInfo = new UserInfo();
         userInfo.setUsername("老六");
         userInfo.setPassword("888");
-        userInfo.setPhoto("default.png");
         int result = userMapper.add(userInfo);
         Assertions.assertSame(1,result);
     }
 
     @Test
-    @Transactional
     void addGetId() {
         UserInfo userInfo = new UserInfo();
         userInfo.setUsername("老六");
@@ -57,7 +54,6 @@ class UserMapperTest {
         int result = userMapper.addGetId(userInfo);
         System.out.println("插入之后的id=" + userInfo.getId());
         Assertions.assertSame(1,result);
-
     }
 
     @Test
