@@ -22,8 +22,14 @@ public class MyReponseBodyAdvice implements ResponseBodyAdvice {
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("state", 1);
-        result.put("data", body);
         result.put("msg", "正常");
+        if (body instanceof String) {
+            String data = (String) body;
+            result.put("data", data);
+        } else {
+            result.put("data", body);
+        }
+        //result.put("data", "11111");
         return result;
     }
 }

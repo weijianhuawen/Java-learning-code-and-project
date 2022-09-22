@@ -1,24 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
+    <resultMap id="BaseMap" type="com.example.demo.model.UserInfo">
+<!--        column 表示数据库字段名 property 表示对应对象的字段名，设置这两个值可以建立映射-->
+<!--        主键约束-->
+        <id column="id" property="id"></id>
+<!--普通变量映射-->
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="photo" property="photo"></result>
+        <result column="createtime" property="createtime"></result>
+        <result column="updatetime" property="updatetime"></result>
+        <result column="state" property="state"></result>
+
+        <collection
+                property="aList"
+                resultMap="com.example.demo.mapper.ArticleMapper.BaseMap"
+                columnPrefix="a_">
+        </collection>
+    </resultMap>
     <select id="getUserById" resultType="com.example.demo.model.UserInfo">
-        select * from userinfo where id=#{id}
+        select * from userinfo
+        <where>
+            <if test="id!=null">
+                and id=#{id}
+            </if>
+        </where>
     </select>
     <select id="getUserByFullName" resultType="com.example.demo.model.UserInfo">
         select * from userinfo where username=${username}
     </select>
     <select id="getOrderList" resultType="com.example.demo.model.UserInfo">
-        select * from userinfo order by createtime ${order};
+        select * from userinfo order by createtime ${order}
     </select>
     <update id="updateName" >
         update userinfo set username=#{username} where id=#{id}
+    </update>
+    <update id="updateUser">
+        update userinfo
+        <set>
+            <if test="username!=null">
+                username=#{username},
+            </if>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="photo!=null">
+                photo=#{photo}
+            </if>
+        </set>
+        where id=#{id}
     </update>
 
     <delete id="delById">
         delete from userinfo where id=#{id}
     </delete>
+    <delete id="deleteIds">
+        delete from userinfo where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
     <insert id="add">
-        insert into userinfo(username, password, photo) values (#{username}, #{password},#{photo});
+        insert into userinfo(username, password, photo) values (#{username}, #{password},#{photo})
     </insert>
     <insert id="add2">
         insert into userinfo(username, password
@@ -32,7 +76,64 @@
                   )
     </insert>
     <insert id="addGetId" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        insert into userinfo(username, password, photo) values (#{username}, #{password},#{photo});
+        insert into userinfo(username, password, photo) values (#{username}, #{password},#{photo})
     </insert>
+    <insert id="addUser">
+        insert into userinfo(username, password
+        <if test="photo!=null">
+            , photo
+        </if>
+        ) values(#{username}, #{password}
+        <if test="photo!=null">
+            , #{photo}
+        </if>
+        )
+    </insert>
+    <insert id="addUser2">
+        insert into userinfo
+        <trim prefix="(" suffix=")" prefixOverrides="," suffixOverrides=",">
+            <if test="username!=null">
+                username,
+            </if>
+            <if test="password!=null">
+                password,
+            </if>
+            <if test="photo!=null">
+                photo
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" prefixOverrides="," suffixOverrides=",">
+            <if test="username!=null">
+                #{username},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="photo!=null">
+                #{photo}
+            </if>
+        </trim>
+    </insert>
+
+    <select id="login" resultType="com.example.demo.model.UserInfo">
+        select * from userinfo where username='${username}' and password='${password}'
+    </select>
+
+    <select id="getListByName" resultType="com.example.demo.model.UserInfo">
+        select * from userinfo where username like concat('%', #{username}, '%')
+    </select>
+    <select id="getUserAndArticlesById" resultMap="BaseMap">
+        select u.*,
+               a.id as a_id,
+               a.title as a_title,
+               a.content as a_content,
+               a.createtime as a_createtime,
+               a.updatetime as a_updatetime,
+               a.uid as a_uid,
+               a.rcount as a_rcount,
+               a.state as a_state
+               from userinfo as u left join articleinfo as a on u.id=a.uid where u.id=#{uid}
+    </select>
 
 </mapper>

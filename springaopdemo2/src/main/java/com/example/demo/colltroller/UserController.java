@@ -29,7 +29,7 @@ public class UserController {
     //算术异常
     @RequestMapping("/ae")
     public double add() {
-        double a = 10/4;
+        double a = 10/0;
         return a;
     }
     //其他异常

@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class UserInfo {
     private Integer id;
@@ -11,4 +13,5 @@ public class UserInfo {
     private String createtime;
     private String updatetime;
     private Integer state;
+    private List<Articleinfo> aList;
 }

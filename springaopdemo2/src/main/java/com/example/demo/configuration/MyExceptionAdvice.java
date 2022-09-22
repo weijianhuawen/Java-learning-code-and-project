@@ -1,6 +1,7 @@
 package com.example.demo.configuration;
 
 
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -28,4 +29,5 @@ public class MyExceptionAdvice{
         result.put("msg",  e.toString() + "异常:" + e.getMessage());
         return result;
     }
+
 }

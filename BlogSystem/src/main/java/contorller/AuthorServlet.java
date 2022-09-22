@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 
 @WebServlet("/authorInfo")
@@ -51,7 +52,10 @@ public class AuthorServlet extends HttpServlet {
             return;
         }
         //最终找到了
-        Object
+        resp.setContentType("text/html");
+        PrintWriter out = resp.getWriter();
+        out.println();
+        PrintWriter respWriter = resp.getWriter();
         user.setPassword("");
         String jsonStr = objectMapper.writeValueAsString(user);
         resp.getWriter().write(jsonStr);
