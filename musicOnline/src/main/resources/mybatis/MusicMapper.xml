@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.musicdemo.mapper.MusicMapper">
+
+    <insert id="insertMusic">
+        insert into music(title, singer, time, url, userid) values(#{title}, #{singer}, #{time}, #{url}, #{userid});
+    </insert>
+    <delete id="deleteMusicById">
+        delete
+        from music
+        where mid=#{mid};
+    </delete>
+    <select id="selectMusicByTitleAndSinger" resultType="com.example.musicdemo.model.Music">
+        select * from music where title=#{title} and singer=#{singer};
+    </select>
+    <select id="findMusicById" resultType="com.example.musicdemo.model.Music">
+        select * from music where mid=#{mid};
+    </select>
+
+</mapper>
