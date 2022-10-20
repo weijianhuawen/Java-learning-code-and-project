@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RequestMapping("music")
 @ResponseBody
@@ -166,6 +167,43 @@ public class MusicController {
     }
 
     //批量删除音乐
+    @RequestMapping("deleteseries")
+    public ResponseBodyMessage<Boolean> deleteSelMusic(@RequestParam("id[]")List<Integer> ids) {
+        //用户登录校验
+        //非空校验
+
+        if (ids == null || ids.size() == 0) {
+            return new ResponseBodyMessage<>(-1, "参数获取错误!", false);
+        }
+        int n = ids.size();
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+//            Music music = musicMapper.findMusicById(ids.get(i));
+//
+//            if (music == null) {
+//                //没有找到 删除失败
+//                log.info("id=" + ids.get(i) + "的音乐不存在!");
+//                return new ResponseBodyMessage<>(-1, "曲库中存在歌曲不存在!", false);
+//            }
+
+            //存在音乐进行删除
+            ResponseBodyMessage<Boolean> res = delete(ids.get(i));
+            if (!res.getData()) {
+                //删除失败 没有找到音乐 或其他原因
+                log.info("已经删除前" + sum + "首歌曲，音乐全部批量删除失败！可能存在曲库中不存在的音乐！");
+                return new ResponseBodyMessage<>(-1, "已经删除前" + sum + "首歌曲，音乐全部批量删除失败！可能存在曲库中不存在的音乐！",false);
+            }
+            sum++;
+        }
+
+        if (sum != n) {
+            //存在没有删除的歌曲
+            log.info("成功删除前" + sum + "首歌曲，存在" + (n-sum) + "首歌曲没有删除成功！");
+            return new ResponseBodyMessage<>(-1, "成功删除前" + sum + "首歌曲，存在" + (n-sum) + "首歌曲没有删除成功！", false);
+        }
+
+        return new ResponseBodyMessage<>(1, "成功删除" + n + "首歌曲", true);
+    }
 
     @RequestMapping("get")
     public ResponseEntity<byte[]> getMusic(String path) {
@@ -173,7 +211,10 @@ public class MusicController {
         if (path == null || path.length() == 0) {
             return null;
         }
-
+        int n = path.length();
+        if (!path.contains(".mp3") || !path.substring(n - 4).equals(".mp3")) {
+            path += ".mp3";
+        }
         File file = new File(savePath + path);
         byte[] res = null;
 
@@ -189,4 +230,30 @@ public class MusicController {
         return ResponseEntity.badRequest().build();
     }
 
+    //查询音乐
+    @RequestMapping("findall")
+    public ResponseBodyMessage<List<Music>> findAllMusic() {
+        List<Music> res = musicMapper.selectAllMusic();
+        return new ResponseBodyMessage<>(1, "已为你查询所有的音乐！", res);
+    }
+
+    //查询音乐
+    @RequestMapping("findbyname")
+    public ResponseBodyMessage<List<Music>> findByName(@RequestParam String musicName) {
+        //登录验证，非空校验
+        if (musicName == null || musicName.length() == 0) {
+            return new ResponseBodyMessage<>(-1, "传入参数为空!", null);
+        }
+
+        List<Music> res = musicMapper.selectIgnoreMusicByTitle(musicName);
+
+        if (res == null) {
+            //曲库不存在任何符号条件的音乐
+            log.info("曲库不存在符号要求的音乐!已为你查询到所有音乐！");
+            res = musicMapper.selectAllMusic();
+            return new ResponseBodyMessage<>(-1, "曲库中不存在符号要求的音乐！已为你查询到所有音乐！", res);
+        }
+
+        return new ResponseBodyMessage<>(1, "已为你找到" + res.size() + "首音乐！", res);
+    }
 }
