@@ -71,7 +71,7 @@ public class UserLoginController {
             boolean ret = bCryptPasswordEncoder.matches(password, user.getPassword());
             if (!ret) {
                 //密码错误
-                return new ResponseBodyMessage<>(-1, "用户账户名或密码错误!", user);
+                return new ResponseBodyMessage<>(-1, "用户账户名或密码错误!", null);
             }
             //验证通过
             req.getSession().setAttribute(Constant.USERINFO_SESSION_KEY, user);

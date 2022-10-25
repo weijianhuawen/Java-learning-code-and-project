@@ -1,11 +1,13 @@
 package com.example.musicdemo.controller;
 
 
+import com.example.musicdemo.mapper.LoveMusicMapper;
 import com.example.musicdemo.mapper.MusicMapper;
 import com.example.musicdemo.model.Music;
 import com.example.musicdemo.model.UserLogin;
 import com.example.musicdemo.tools.Constant;
 import com.example.musicdemo.tools.ResponseBodyMessage;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +31,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
+
 @RequestMapping("music")
 @ResponseBody
 @RestController
@@ -40,6 +44,9 @@ public class MusicController {
 
     @Resource
     MusicMapper musicMapper;
+
+    @Resource
+    LoveMusicMapper loveMusicMapper;
 
     @Value("${music.local.path}")
     private String savePath;
@@ -131,12 +138,13 @@ public class MusicController {
 
     //根据id删除音乐
     @RequestMapping("delete")
-    public ResponseBodyMessage<Boolean> delete(@RequestParam Integer id) {
+    public ResponseBodyMessage<Boolean> delete(Integer mid) {
         //非空校验
         //登录验证
 
         //使用标题和歌手查询
-        Music music = musicMapper.findMusicById(id);
+        System.out.println(mid);
+        Music music = musicMapper.findMusicById(mid);
         if (music == null) {
             //没有查询到
             return new ResponseBodyMessage<>(-4, "曲库中没有该歌曲!", false);
@@ -144,7 +152,7 @@ public class MusicController {
 
         //找到了，删除路径下的歌曲和数据库记录
 
-        int ret = musicMapper.deleteMusicById(id);
+        int ret = musicMapper.deleteMusicById(mid);
         if (ret == 1) {
             //数据库数据成功，继续删除服务器端的文件
             //获取url字符串中第一个等于号后面的标题
@@ -156,6 +164,8 @@ public class MusicController {
 
             if (file.delete()) {
                 //删除成功
+                //删除收藏音乐
+                int lores = loveMusicMapper.deleteLoveMusicByMid(mid);
                 log.info(filename + "删除成功!");
                 return new ResponseBodyMessage<>(1, "已将" + filename + "从曲库中删除", true);
             } else {
@@ -168,7 +178,7 @@ public class MusicController {
 
     //批量删除音乐
     @RequestMapping("deleteseries")
-    public ResponseBodyMessage<Boolean> deleteSelMusic(@RequestParam("id[]")List<Integer> ids) {
+    public ResponseBodyMessage<Boolean> deleteSelMusic(@RequestParam(value = "ids", required = false) List<Integer> ids) {
         //用户登录校验
         //非空校验
 
@@ -239,19 +249,21 @@ public class MusicController {
 
     //查询音乐
     @RequestMapping("findbyname")
-    public ResponseBodyMessage<List<Music>> findByName(@RequestParam String musicName) {
-        //登录验证，非空校验
+    public ResponseBodyMessage<List<Music>> findByName(String musicName) {
+        List<Music> res = null;
+        System.out.println(musicName);
         if (musicName == null || musicName.length() == 0) {
-            return new ResponseBodyMessage<>(-1, "传入参数为空!", null);
+            res = musicMapper.selectAllMusic();
+            return new ResponseBodyMessage<>(1, "已为你查询到所有音乐！", res);
         }
 
-        List<Music> res = musicMapper.selectIgnoreMusicByTitle(musicName);
+        res = musicMapper.selectIgnoreMusicByTitle(musicName);
 
         if (res == null) {
             //曲库不存在任何符号条件的音乐
             log.info("曲库不存在符号要求的音乐!已为你查询到所有音乐！");
             res = musicMapper.selectAllMusic();
-            return new ResponseBodyMessage<>(-1, "曲库中不存在符号要求的音乐！已为你查询到所有音乐！", res);
+            return new ResponseBodyMessage<>(1, "曲库中不存在符号要求的音乐！已为你查询到所有音乐！", res);
         }
 
         return new ResponseBodyMessage<>(1, "已为你找到" + res.size() + "首音乐！", res);

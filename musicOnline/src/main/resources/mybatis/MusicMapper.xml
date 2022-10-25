@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.musicdemo.mapper.MusicMapper">
+    <resultMap id="BaseMap" type="com.example.musicdemo.model.Music">
+        <id column="mid" property="mid"></id>
+        <result column="title" property="title"></result>
+        <result column="singer" property="singer"></result>
+        <result column="url" property="url"></result>
+        <result column="time" property="time"></result>
+        <result column="userid" property="userid"></result>
+        <result column="singer" property="singer"></result>
+    </resultMap>
 
     <insert id="insertMusic">
         insert into music(title, singer, time, url, userid) values(#{title}, #{singer}, #{time}, #{url}, #{userid});
     </insert>
+
     <delete id="deleteMusicById">
         delete
         from music
         where mid=#{mid};
     </delete>
+
     <select id="selectMusicByTitleAndSinger" resultType="com.example.musicdemo.model.Music">
         select * from music where title=#{title} and singer=#{singer};
     </select>
+
     <select id="findMusicById" resultType="com.example.musicdemo.model.Music">
         select * from music where mid=#{mid};
     </select>
+
     <select id="selectAllMusic" resultType="com.example.musicdemo.model.Music">
         select * from music;
     </select>
+
     <select id="selectIgnoreMusicByTitle" resultType="com.example.musicdemo.model.Music">
         select * from music where title like concat('%', #{title}, '%');
     </select>
+
 
 </mapper>

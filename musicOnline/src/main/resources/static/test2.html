@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        // $(document).ready(function() {
+        $(function (){
+            $("#submit").click(function() {
+                //获取账号和密码
+                var name = $("#user").val();
+                var password = $("#password").val();
+                //
+                alert("username" + name + ", password" + password);
+
+                //ajax
+                $.ajax({
+                    url: "/test/login",
+                    data : {"username" : name, "password" : password},
+                    type: "post",
+                    dataType: "json",
+                    success:function(data) {
+                        //返回的数据
+                        console.log("服务器返回的数据：" + data);
+
+                        if (data.statue >= 0) {
+                            //登录成功
+                            console.log("登录成功！");
+                            //跳转页面
+                        } else {
+                            //登录失败
+                            console.log("登录失败！");
+                        }
+
+                    }
+                })
+            });
+        });
+    </script>
+
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <label for="">账号：</label>
+        <input type="text" name="username" id="user">
+    </div>
+
+    <div>
+        <label for="">密码：</label>
+        <input type="text" name="password" id="password">
+    </div>
+
+    <div>
+        <input type="button" id="submit" value="提交">
+    </div>
+    
+</body>
+</html>
