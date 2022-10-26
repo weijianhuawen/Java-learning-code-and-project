@@ -34,70 +34,85 @@
     $(function(){
         load();
 
+        $("#submitLove").click(function() {
+            //获取musicName
+            var musicName = $("#loveMusicInput").val();
+            load(musicName);
+        });
     });
 
     //musicName可以传参  也可以不传参数
     function load(musicName) {
+        //发送异步请求
         $.ajax({
-            url:"/lovemusic/findlovemusic",
-            data:{"musicName": musicName},
-            type:"GET",
-            dataType:"json",
-            success:function(obj) {
-                console.log(obj);
-                var data = obj.data;//数组
-                var s = '';
-                //data[i].id    data[i].singer  data[i].title
-                for(var i = 0; i < data.length;i++) {
-                    var musicUrl = data[i].url+".mp3";
-                    console.log(musicUrl);
-                    s += '<tr>';
-                    s += '<td>'+data[i].title+'</td>';
-                    s += '<td>'+data[i].singer+'</td>';
-                    s += "<td <a href=\"\">  <audio src= \""+ musicUrl+"\"  + controls=\"controls\" preload=\"none\" loop=\"loop\">  >"  + "</audio> </a> </td>";
-                    //s += '<td> <button class = "btn btn-primary"  onclick="playerSong(\''+musicUrl+'\')"> 播放歌曲 </button>' +'</td>';
-                    s += '<td> <button class = "btn btn-primary"  onclick="deleteInfo('+data[i].id+')"> 移除 </button>'  +'</td>';
-                    s += "</tr>"
+            url: "/lovemusic/findlove",
+            type: "get",
+            dataType: "json",
+            data: {musicName : musicName},
+
+            success: function(body) {
+                //根据body获取到的data结果拼接页面
+                console.log(body);
+                var data = body.data;
+                var s = "";
+                
+                for (var i = 0; i < data.length; i++) {
+                    var musicUrl = data[i].url + ".mp3";
+                    //拼接页面
+                    /**
+                    <tr>
+                    <td>成都</td>
+                    <td>赵雷</td>
+                    <td><button class="btn btn-primary" onclick="playerSong('+musicUrl+')">播放歌曲</button></td>
+                    <td><button class="btn btn-primary" onclick="deleteInfo('+musicUrl+')">删除</button></td>
+                    </tr> */
+                    s += "<tr>";
+                    s += '<td>' + data[i].title + '</td>';
+                    s += '<td>' + data[i].singer + '</td>';
+                    s += '<td><button class="btn btn-primary" onclick="playerSong(\'' + musicUrl + '\')">播放歌曲</button></td>';
+                    s += '<td><button class="btn btn-primary" onclick="deleteInfo(' + data[i].mid + ')">移除歌曲</button></td>';
+                    s += "</tr>";
                 }
+
                 $("#info").html(s);
             }
         });
+
     }
 
-    function playerSong(obj) {
-        var name = obj.substring(obj.lastIndexOf("=")+1);
+    function playerSong(url) {
+        var name = url.substring(url.lastIndexOf("=")+1);
         //obj:播放的音乐的地址  name:播放的音乐的名称，0：播放的开始时间  false:不自动播放
-        SewisePlayer.toPlay(obj,name,0,true);
+        SewisePlayer.toPlay(url, name, 0, true);
     }
 
-    function deleteInfo(obj) {
-        console.log(obj);
+    function deleteInfo(mid) {
+        console.log(mid);
         $.ajax({
-            url:"/lovemusic/deletelovemusic",
+            url:"/lovemusic/removelove",
             type: "POST",
-            data:{"id":obj},
+            data:{"mid":mid},
             dataType:"json",
 
-            success: function(val) {
-                console.log(val);
+            success: function(body) {
+                console.log(body);
 
-                if(val.data == true) {
+                if (body == null) {
+                    alert("参数获取失败!");
+                    return;
+                } 
+
+                if(body.data == true) {
                     //删除成功！
-                    alert("删除成功！,重新加载当前页面！");
-                    window.location.href = "list.html";
+                    alert(body.message);
+                    window.location.href = "loveMusic.html";
                 }else{
-                    alert("删除失败！");
+                    alert(body.message);
                 }
             }
         });
     }
 
-    $(function(){
-        $("#submit1").click( function(){
-            var name = $("#exampleInputName2").val();
-            load(name);
-        });
-    });
 
 </script>
 </head>
@@ -108,9 +123,9 @@
         <form class="form-inline">
             <div class="form-group">
                 <label for="exampleInputName2">歌曲名</label>
-                <input name="name" type="text" class="form-control" id="exampleInputName2" >
+                <input name="name" type="text" class="form-control" id="loveMusicInput" >
             </div>
-            <button id="submit1" type="button" class="btn btn-default">查询</button>
+            <button id="submitLove" type="button" class="btn btn-default">查询</button>
         </form>
     </div>
     <div style="float: right;margin-bottom: 15px">

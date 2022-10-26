@@ -12,4 +12,7 @@ public class AppConfig {
     public BCryptPasswordEncoder getBCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    //配置拦截规则
+
 }

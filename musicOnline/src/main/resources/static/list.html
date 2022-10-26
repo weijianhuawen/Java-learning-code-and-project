@@ -91,8 +91,8 @@
         function load(musicName) {
             $.ajax({
                 url : "/music/findbyname",
-                data : {"musicName" : musicName},
                 type : "get",
+                data : {"musicName" : musicName},
                 dataType : "json",
                 success:function(body) {
                     console.log(body);
@@ -165,22 +165,28 @@
         //     });
         // })
 
-
-        function loveInfo(obj) {
-
+        function loveInfo(mid) {
             $.ajax({
-                url:"/lovemusic/likeMusic",
-                type:"POST",
-                data:{"id":obj},
-                dataType:"json",
+                url: "lovemusic/love",
+                type: "post",
+                dataType: "json",
+                data: {mid : mid},
 
-                success:function(val){
-                    if(val.data == true) {
-                        alert("收藏成功！");
-                        window.location.href = "list.html";
-                    }else{
-                        alert("收藏失败！");
+                success: function(body) {
+                    if (body == null) {
+                        alert("参数获取失败！");
+                        return;
                     }
+                    if (body.statue >= 0 && body.data == true) {
+                        //收藏成功或者取消收藏成功
+                        alert(body.message);
+                        //刷新页面
+                        window.location.href = "list.html";
+                    } else {
+                        //收藏失败
+                        alert(body.message);
+                    }
+
                 }
             });
         }
